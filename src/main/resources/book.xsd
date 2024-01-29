@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://localhost:8080/books"
+           xmlns:tns="http://localhost:8080/books"
+           elementFormDefault="qualified">
+
+    <xs:complexType name="bookEntity">
+        <xs:sequence>
+            <xs:element name="id" type="xs:int"/>
+            <xs:element name="title" type="xs:string"/>
+            <xs:element name="author" type="xs:string"/>
+            <xs:element name="description" type="xs:string"/>
+            <xs:element name="rating" type="xs:int"/>
+            <xs:element name="datePublished" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="status" type="xs:string" />
+            <xs:element name="message" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="GetBookByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetBookByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bookEntity" type="tns:bookEntity"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="SaveBookRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="title" type="xs:string"/>
+                <xs:element name="author" type="xs:string"/>
+                <xs:element name="description" type="xs:string"/>
+                <xs:element name="rating" type="xs:int"/>
+                <xs:element name="datePublished" type="xs:date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="SaveBookResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bookEntity" type="tns:bookEntity"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="UpdateBookRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bookEntity" type="tns:bookEntity"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="UpdateBookResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="bookEntity" type="tns:bookEntity"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="DeleteBookByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="DeleteBookByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+</xs:schema>
